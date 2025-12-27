@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqyg5dsyggyi2"]
+
+[ext_resource type="Script" uid="uid://bnsa3jego5dii" path="res://scripts/card.gd" id="1_6pg5s"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7ddy"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.637843, 0.637843, 0.637843, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.06)
+shadow_offset = Vector2(0, 8)
+
+[node name="Card" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 168)
+offset_right = 480.0
+offset_bottom = 168.0
+script = ExtResource("1_6pg5s")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o7ddy")
+
+[node name="Padding" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Padding"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title" type="Label" parent="Panel/Padding/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "16 декабря 2025"
+
+[node name="Mood" type="Label" parent="Panel/Padding/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.419608, 0.447059, 0.501961, 1)
+theme_override_font_sizes/font_size = 18
+text = "Настроение: {0}/10"
+
+[node name="Triggers" type="Label" parent="Panel/Padding/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.419608, 0.447059, 0.501961, 1)
+theme_override_font_sizes/font_size = 18
+text = "Раздражители: {0}"
+
+[node name="Notes" type="Label" parent="Panel/Padding/VBoxContainer"]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+autowrap_mode = 3

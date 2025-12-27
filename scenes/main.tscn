@@ -1,0 +1,712 @@
+[gd_scene load_steps=28 format=3 uid="uid://b3s26rurdng51"]
+
+[ext_resource type="StyleBox" uid="uid://dylmguj57hfji" path="res://themes/button_primary.tres" id="1_85g3d"]
+[ext_resource type="Script" uid="uid://cuul2t3773nor" path="res://scripts/today_screen.gd" id="1_jkv2x"]
+[ext_resource type="Script" uid="uid://c0px3amxayl5i" path="res://scripts/main.gd" id="1_muem4"]
+[ext_resource type="Script" uid="uid://dfikul8v3jabl" path="res://scripts/mood_select_logic.gd" id="2_a8y0u"]
+[ext_resource type="Script" uid="uid://bkb8cxa7t5v2h" path="res://scripts/bottom_tabs.gd" id="2_sugp2"]
+[ext_resource type="StyleBox" uid="uid://clrvypyyhfr7g" path="res://themes/bottom/hover.tres" id="2_tipki"]
+[ext_resource type="StyleBox" uid="uid://dliehia4bbltb" path="res://themes/bottom/normal.tres" id="3_85g3d"]
+[ext_resource type="Texture2D" uid="uid://p8arh5r0x61g" path="res://icons/bottom-panel/today.svg" id="3_tefeu"]
+[ext_resource type="StyleBox" uid="uid://cgwlbmjk6khyr" path="res://themes/textbox.tres" id="3_trceg"]
+[ext_resource type="Script" uid="uid://bnsa3jego5dii" path="res://scripts/card.gd" id="3_ya4ey"]
+[ext_resource type="PackedScene" uid="uid://cwktaru0cjlmj" path="res://objects/card.tscn" id="4_eb6dy"]
+[ext_resource type="Texture2D" uid="uid://y5bsxdmyewca" path="res://icons/bottom-panel/journal.svg" id="4_o6xl0"]
+[ext_resource type="Script" uid="uid://badywyvmou7dy" path="res://scripts/chart_test.gd" id="4_trceg"]
+[ext_resource type="Texture2D" uid="uid://7t2vmww452g0" path="res://icons/bottom-panel/report.svg" id="5_tipki"]
+[ext_resource type="Texture2D" uid="uid://dtlby5w7jxx15" path="res://icons/bottom-panel/profile.svg" id="6_85g3d"]
+[ext_resource type="StyleBox" uid="uid://djo28u35046rc" path="res://themes/button_disabled.tres" id="6_jbj1t"]
+[ext_resource type="Script" uid="uid://cv7r46618bfd4" path="res://scripts/journal_screen.gd" id="8_dp3eg"]
+[ext_resource type="Script" uid="uid://b2iu7y0ne38ov" path="res://scripts/profile_screen.gd" id="9_0ld40"]
+[ext_resource type="Script" uid="uid://ci8uy8ugnkh62" path="res://scripts/report_screen.gd" id="9_dp3eg"]
+[ext_resource type="Texture2D" uid="uid://4peuc1odubjw" path="res://themes/icons/check.svg" id="11_jscy8"]
+[ext_resource type="Texture2D" uid="uid://84lek4mpep0v" path="res://themes/icons/uncheck.svg" id="12_pm3ni"]
+[ext_resource type="Script" uid="uid://b1cgqodhuow02" path="res://addons/NotificationSchedulerPlugin/NotificationScheduler.gd" id="20_gqmmt"]
+[ext_resource type="Script" uid="uid://cf84gpd01ys54" path="res://scripts/hint.gd" id="22_pm3ni"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o7ddy"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.06)
+shadow_size = 24
+shadow_offset = Vector2(0, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8y0u"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.753406, 0.943319, 0.981195, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_jyhfs"]
+Button/colors/font_color = Color(0.419608, 0.447059, 0.501961, 1)
+Button/colors/font_focus_color = Color(0.419608, 0.447059, 0.501961, 1)
+Button/colors/font_hover_color = Color(0.160784, 0.160784, 0.160784, 1)
+Button/colors/font_hover_pressed_color = Color(0.419608, 0.447059, 0.501961, 1)
+Button/colors/font_pressed_color = Color(0.168627, 0.541176, 0.603922, 1)
+Button/styles/focus = ExtResource("2_tipki")
+Button/styles/hover = ExtResource("2_tipki")
+Button/styles/hover_pressed = ExtResource("2_tipki")
+Button/styles/normal = ExtResource("3_85g3d")
+Button/styles/pressed = ExtResource("3_85g3d")
+HBoxContainer/constants/separation = 0
+
+[sub_resource type="LabelSettings" id="LabelSettings_jscy8"]
+font_size = 14
+
+[node name="main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_muem4")
+
+[node name="Screens" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Today" type="Control" parent="Screens"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jkv2x")
+
+[node name="background" type="ColorRect" parent="Screens/Today"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.976471, 0.984314, 0.988235, 1)
+
+[node name="body" type="MarginContainer" parent="Screens/Today"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 96
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screens/Today/body"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="MarginContainer" parent="Screens/Today/body/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Screens/Today/body/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_constants/separation = 285
+alignment = 1
+
+[node name="Label" type="Label" parent="Screens/Today/body/VBoxContainer/Header/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Сегодня"
+
+[node name="date" type="Label" parent="Screens/Today/body/VBoxContainer/Header/HBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.419608, 0.447059, 0.501961, 1)
+theme_override_font_sizes/font_size = 14
+text = "16 дек"
+
+[node name="Card" type="MarginContainer" parent="Screens/Today/body/VBoxContainer"]
+custom_minimum_size = Vector2(0, 531)
+layout_mode = 2
+script = ExtResource("3_ya4ey")
+
+[node name="Panel" type="Panel" parent="Screens/Today/body/VBoxContainer/Card"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o7ddy")
+
+[node name="Padding" type="MarginContainer" parent="Screens/Today/body/VBoxContainer/Card/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Title" type="Label" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Настроение"
+
+[node name="mood" type="HBoxContainer" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+script = ExtResource("2_a8y0u")
+
+[node name="1" type="Button" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/mood"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = ExtResource("1_85g3d")
+toggle_mode = true
+text = "1"
+
+[node name="2" type="Button" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/mood"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = ExtResource("1_85g3d")
+toggle_mode = true
+text = "2"
+
+[node name="3" type="Button" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/mood"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = ExtResource("1_85g3d")
+toggle_mode = true
+text = "3"
+
+[node name="4" type="Button" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/mood"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = ExtResource("1_85g3d")
+toggle_mode = true
+text = "4"
+
+[node name="5" type="Button" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/mood"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = ExtResource("1_85g3d")
+toggle_mode = true
+text = "5"
+
+[node name="6" type="Button" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/mood"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = ExtResource("1_85g3d")
+toggle_mode = true
+text = "6"
+
+[node name="7" type="Button" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/mood"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = ExtResource("1_85g3d")
+toggle_mode = true
+text = "7"
+
+[node name="8" type="Button" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/mood"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = ExtResource("1_85g3d")
+toggle_mode = true
+text = "8"
+
+[node name="9" type="Button" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/mood"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = ExtResource("1_85g3d")
+toggle_mode = true
+text = "9"
+
+[node name="10" type="Button" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/mood"]
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_a8y0u")
+theme_override_styles/pressed = ExtResource("1_85g3d")
+toggle_mode = true
+text = "10"
+
+[node name="TitleTriggers" type="Label" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Что повлияло на ваше настроение?"
+
+[node name="triggers" type="HFlowContainer" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+
+[node name="TriggerPrompt" type="HBoxContainer" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/TriggerPrompt"]
+custom_minimum_size = Vector2(0, 51)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.458824, 0.458824, 0.458824, 1)
+theme_override_styles/normal = ExtResource("3_trceg")
+placeholder_text = "Один раздражитель"
+
+[node name="Add" type="Button" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/TriggerPrompt"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("1_85g3d")
+text = " + "
+icon_alignment = 1
+
+[node name="TitleNote" type="Label" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "Расскажите немного больше о дне"
+
+[node name="Notes" type="TextEdit" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+focus_mode = 1
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.458824, 0.458824, 0.458824, 1)
+theme_override_styles/normal = ExtResource("3_trceg")
+placeholder_text = "Расскажите немного подробнее о прошедшем дне"
+wrap_mode = 1
+
+[node name="Save" type="Button" parent="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = ExtResource("1_85g3d")
+theme_override_styles/disabled = ExtResource("6_jbj1t")
+disabled = true
+text = "Сохранить"
+
+[node name="Journal" type="Control" parent="Screens"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 480.0
+offset_right = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_dp3eg")
+
+[node name="background" type="ColorRect" parent="Screens/Journal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.976471, 0.984314, 0.988235, 1)
+
+[node name="body" type="MarginContainer" parent="Screens/Journal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 96
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screens/Journal/body"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Header" type="MarginContainer" parent="Screens/Journal/body/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Screens/Journal/body/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Журнал"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Screens/Journal/body/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screens/Journal/body/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Profile" type="Control" parent="Screens"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1440.0
+offset_right = 1440.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_0ld40")
+
+[node name="background" type="ColorRect" parent="Screens/Profile"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.976471, 0.984314, 0.988235, 1)
+
+[node name="body" type="MarginContainer" parent="Screens/Profile"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 96
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screens/Profile/body"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Header" type="MarginContainer" parent="Screens/Profile/body/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Screens/Profile/body/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Профиль"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screens/Profile/body/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 12
+
+[node name="Notifications" parent="Screens/Profile/body/VBoxContainer/VBoxContainer" instance=ExtResource("4_eb6dy")]
+custom_minimum_size = Vector2(0, 101)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Screens/Profile/body/VBoxContainer/VBoxContainer/Notifications/Panel/Padding/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Напоминание (уведомление)"
+
+[node name="NotifyEnable" type="CheckButton" parent="Screens/Profile/body/VBoxContainer/VBoxContainer/Notifications/Panel/Padding/VBoxContainer" index="1"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_icons/checked = ExtResource("11_jscy8")
+theme_override_icons/unchecked = ExtResource("12_pm3ni")
+text = "Включить уведомления"
+
+[node name="Data" parent="Screens/Profile/body/VBoxContainer/VBoxContainer" instance=ExtResource("4_eb6dy")]
+custom_minimum_size = Vector2(0, 158)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Screens/Profile/body/VBoxContainer/VBoxContainer/Data/Panel/Padding/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Данные"
+
+[node name="Export" type="Button" parent="Screens/Profile/body/VBoxContainer/VBoxContainer/Data/Panel/Padding/VBoxContainer" index="1"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = ExtResource("1_85g3d")
+text = "Экспортировать"
+
+[node name="Import" type="Button" parent="Screens/Profile/body/VBoxContainer/VBoxContainer/Data/Panel/Padding/VBoxContainer" index="2"]
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = ExtResource("1_85g3d")
+text = "Импортировать"
+
+[node name="Report" type="Control" parent="Screens"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 960.0
+offset_right = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_dp3eg")
+
+[node name="background" type="ColorRect" parent="Screens/Report"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.976471, 0.984314, 0.988235, 1)
+
+[node name="body" type="MarginContainer" parent="Screens/Report"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 96
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Screens/Report/body"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="MarginContainer" parent="Screens/Report/body/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Screens/Report/body/VBoxContainer/Header"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Отчет"
+
+[node name="Card" parent="Screens/Report/body/VBoxContainer" instance=ExtResource("4_eb6dy")]
+custom_minimum_size = Vector2(0, 153)
+layout_mode = 2
+
+[node name="title" type="Label" parent="Screens/Report/body/VBoxContainer/Card/Panel/Padding/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Среднее настроение"
+
+[node name="avg" type="Label" parent="Screens/Report/body/VBoxContainer/Card/Panel/Padding/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "5.1"
+
+[node name="avg2" type="Label" parent="Screens/Report/body/VBoxContainer/Card/Panel/Padding/VBoxContainer" index="2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "За последние 7 дней"
+
+[node name="Card3" parent="Screens/Report/body/VBoxContainer" instance=ExtResource("4_eb6dy")]
+custom_minimum_size = Vector2(0, 260)
+layout_mode = 2
+script = ExtResource("4_trceg")
+
+[node name="VBoxContainer" parent="Screens/Report/body/VBoxContainer/Card3/Panel/Padding" index="0"]
+alignment = 0
+
+[node name="title" type="Label" parent="Screens/Report/body/VBoxContainer/Card3/Panel/Padding/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "График"
+
+[node name="Card2" parent="Screens/Report/body/VBoxContainer" instance=ExtResource("4_eb6dy")]
+custom_minimum_size = Vector2(0, 93)
+layout_mode = 2
+
+[node name="title" type="Label" parent="Screens/Report/body/VBoxContainer/Card2/Panel/Padding/VBoxContainer" index="0"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Частые триггеры"
+
+[node name="triggers" type="Label" parent="Screens/Report/body/VBoxContainer/Card2/Panel/Padding/VBoxContainer" index="1"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+
+[node name="BottomTabs" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.936
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.0799561
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_jyhfs")
+alignment = 1
+script = ExtResource("2_sugp2")
+
+[node name="Today" type="Button" parent="BottomTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_pressed = true
+text = "Сегодня"
+icon = ExtResource("3_tefeu")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Journal" type="Button" parent="BottomTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Журнал"
+icon = ExtResource("4_o6xl0")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Report" type="Button" parent="BottomTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Отчет"
+icon = ExtResource("5_tipki")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Profile" type="Button" parent="BottomTabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "Профиль"
+icon = ExtResource("6_85g3d")
+icon_alignment = 1
+vertical_icon_alignment = 0
+expand_icon = true
+
+[node name="Hint" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.102000006
+anchor_top = 0.77000004
+anchor_right = 0.89400005
+anchor_bottom = 0.83800006
+offset_left = 0.0399971
+offset_top = 0.3499756
+offset_right = -0.120025635
+offset_bottom = -0.11004639
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("22_pm3ni")
+
+[node name="margin" type="MarginContainer" parent="Hint"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Label" type="Label" parent="Hint/margin"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_jscy8")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="NotificationScheduler" type="Node" parent="."]
+script = ExtResource("20_gqmmt")
+metadata/_custom_type_script = "uid://b1cgqodhuow02"
+
+[node name="ImportDB" type="FileDialog" parent="."]
+oversampling_override = 1.0
+title = "Open a File"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.db")
+use_native_dialog = true
+
+[node name="ExportDB" type="FileDialog" parent="."]
+oversampling_override = 1.0
+access = 2
+filters = PackedStringArray("*.db")
+use_native_dialog = true
+
+[connection signal="db_initilized" from="." to="Screens/Today" method="_on_main_db_initilized"]
+[connection signal="update_entries" from="." to="Screens/Journal" method="_on_main_update_entries"]
+[connection signal="update_entries" from="." to="Screens/Report" method="_on_main_update_entries"]
+[connection signal="pressed" from="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/TriggerPrompt/Add" to="Screens/Today" method="_on_add_trigger_pressed"]
+[connection signal="pressed" from="Screens/Today/body/VBoxContainer/Card/Panel/Padding/VBoxContainer/Save" to="Screens/Today" method="_on_save_today_pressed"]
+[connection signal="pressed" from="Screens/Profile/body/VBoxContainer/VBoxContainer/Data/Panel/Padding/VBoxContainer/Export" to="." method="_on_export_pressed"]
+[connection signal="pressed" from="Screens/Profile/body/VBoxContainer/VBoxContainer/Data/Panel/Padding/VBoxContainer/Import" to="." method="_on_import_pressed"]
+
+[editable path="Screens/Profile/body/VBoxContainer/VBoxContainer/Notifications"]
+[editable path="Screens/Profile/body/VBoxContainer/VBoxContainer/Data"]
+[editable path="Screens/Report/body/VBoxContainer/Card"]
+[editable path="Screens/Report/body/VBoxContainer/Card3"]
+[editable path="Screens/Report/body/VBoxContainer/Card2"]

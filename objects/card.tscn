@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwktaru0cjlmj"]
+
+[ext_resource type="Script" uid="uid://bnsa3jego5dii" path="res://scripts/card.gd" id="1_k5eb0"]
+[ext_resource type="StyleBox" uid="uid://o1stva714fpo" path="res://themes/card.tres" id="2_77oaa"]
+
+[node name="Card" type="MarginContainer"]
+custom_minimum_size = Vector2(0, 132)
+script = ExtResource("1_k5eb0")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_77oaa")
+
+[node name="Padding" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Padding"]
+clip_contents = true
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1

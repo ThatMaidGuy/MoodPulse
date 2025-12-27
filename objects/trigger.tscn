@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8ubsb6uld4s8"]
+
+[ext_resource type="StyleBox" uid="uid://dylmguj57hfji" path="res://themes/button_primary.tres" id="1_uvbb4"]
+
+[node name="trigger" type="Button"]
+theme_override_styles/normal = ExtResource("1_uvbb4")
+text = "сон"
